@@ -12,9 +12,12 @@ class ThemeDataDef {
   static ThemeData themelightData = ThemeData.light().copyWith(
     primaryColor: ColorManager.primary,
     textTheme: GoogleFonts.tajawalTextTheme(),
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
+      toolbarTextStyle: GoogleFonts.tajawal(),
+      foregroundColor: ColorManager.white,
       backgroundColor: ColorManager.primary,
       titleTextStyle: TextStyle(
+        fontFamily: GoogleFonts.tajawal().fontFamily,
         color: ColorManager.white,
         fontSize: 20,
         fontWeight: FontWeight.w600,
