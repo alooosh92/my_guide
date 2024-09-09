@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_guide/controller/home_controller.dart';
+import 'package:my_guide/data/color_manager.dart';
 import 'package:my_guide/screen/home/widget/list_center_home.dart';
 
 class BodyHome extends StatelessWidget {
@@ -16,7 +17,9 @@ class BodyHome extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(
+              color: ColorManager.primary,
+            ),
           );
         }
         if (snapshot.connectionState == ConnectionState.done) {

@@ -13,7 +13,7 @@ class SearchAppBarHome extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       child: SearchBar(
-        hintText: "يحث",
+        hintText: "بحث",
         onChanged: (text) => homeController.searchItem(text),
         elevation: const WidgetStatePropertyAll(20),
         leading: const Icon(Icons.search),
