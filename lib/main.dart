@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       locale: const Locale('ar'),
       debugShowCheckedModeBanner: false,
-      themeMode: getThemeMode(),
+      themeMode: ThemeMode.light,
       theme: ThemeDataDef.themelightData,
       darkTheme: ThemeDataDef.themeDarkData,
       initialBinding: BindingManager(),

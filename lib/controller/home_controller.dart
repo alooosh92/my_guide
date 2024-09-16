@@ -22,8 +22,10 @@ class HomeController extends GetxController {
   ];
 
   Future<void> getCenters() async {
+    //"https://drive.google.com/uc?export=view&id=1PNYIxvkxaG87sf0Rmdpaa5HBOozubnED"zakor
+    //"https://drive.google.com/uc?export=view&id=1Xnhep_BN6RVeXzvT6EQNOsJA-HUD4mry"alosh
     http.Response response = await http.get(Uri.parse(
-        "https://drive.google.com/uc?export=view&id=1Xnhep_BN6RVeXzvT6EQNOsJA-HUD4mry"));
+        "https://drive.google.com/uc?export=view&id=1PNYIxvkxaG87sf0Rmdpaa5HBOozubnED"));
     if (response.statusCode == 200) {
       List<MedicalCenter> list = [];
       try {
