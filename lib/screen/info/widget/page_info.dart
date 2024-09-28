@@ -19,6 +19,7 @@ class PageInfo extends StatelessWidget {
               height: 30,
             ),
             ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: medicalCenter.servicesProvided.length,
               itemBuilder: (context, index) {
