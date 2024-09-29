@@ -6,7 +6,6 @@ import 'package:my_guide/screen/info/widget/bottom_navigation_bar_def_inf.dart';
 import 'package:my_guide/screen/info/widget/page_contact_us.dart';
 import 'package:my_guide/screen/info/widget/page_date.dart';
 import 'package:my_guide/screen/info/widget/page_info.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class InfoScreen extends StatelessWidget {
   const InfoScreen({super.key, required this.medicalCenter});
@@ -19,18 +18,22 @@ class InfoScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorManager.primary,
       appBar: appbarInfo(context, medicalCenter),
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.transparent,
-          onPressed: () async {
-            if (await canLaunchUrlString(medicalCenter.mapLocation)) {
-              launchUrlString(medicalCenter.mapLocation);
-            }
-          },
-          child: Image.asset(
-            'asset/images/map.png',
-          )),
-      bottomNavigationBar:
-          BottomNavigationBarDefInf(pageController: pageController),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButton: FloatingActionButton.small(
+      //     backgroundColor: Colors.transparent,
+      //     onPressed: () async {
+      //       if (await canLaunchUrlString(medicalCenter.mapLocation)) {
+      //         launchUrlString(medicalCenter.mapLocation);
+      //       }
+      //     },
+      //     child: Image.asset(
+      //       'asset/images/map.png',
+      //       fit: BoxFit.fill,
+      //     )),
+      bottomNavigationBar: BottomNavigationBarDefInf(
+        pageController: pageController,
+        medicalCenter: medicalCenter,
+      ),
       body: Container(
         width: MediaQuery.sizeOf(context).width,
         decoration: const BoxDecoration(

@@ -22,7 +22,8 @@ class BodyHome extends StatelessWidget {
             ),
           );
         }
-        if (snapshot.connectionState == ConnectionState.done) {
+        if (snapshot.connectionState == ConnectionState.done ||
+            homeController.centerList.isNotEmpty) {
           return const ListCenterHome();
         }
         return const Center(

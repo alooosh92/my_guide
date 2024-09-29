@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_guide/data/model/medical_center.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -24,9 +25,32 @@ class HomeController extends GetxController {
   Future<void> getCenters() async {
     //"https://drive.google.com/uc?export=view&id=1PNYIxvkxaG87sf0Rmdpaa5HBOozubnED"zakor
     //"https://drive.google.com/uc?export=view&id=1Xnhep_BN6RVeXzvT6EQNOsJA-HUD4mry"alosh
-    http.Response response = await http.get(Uri.parse(
-        "https://drive.google.com/uc?export=view&id=1PNYIxvkxaG87sf0Rmdpaa5HBOozubnED"));
+    var storage = GetStorage();
+    http.Response response = await http
+        .get(Uri.parse(
+            "https://drive.google.com/uc?export=view&id=1PNYIxvkxaG87sf0Rmdpaa5HBOozubnED"))
+        .onError(
+      (error, stackTrace) {
+        var data = storage.read("data");
+        if (data != null) {
+          List<MedicalCenter> list = [];
+          try {
+            for (var element in data) {
+              list.add(MedicalCenter.fromJson(element));
+            }
+            centerList = list;
+            centerListFilter = list;
+            update();
+          } catch (e) {
+            // ignore: avoid_print
+            print(e);
+          }
+        }
+        return http.Response("No internet", 400);
+      },
+    );
     if (response.statusCode == 200) {
+      storage.write("data", json.decode(utf8.decode(response.bodyBytes)));
       List<MedicalCenter> list = [];
       try {
         var body = json.decode(utf8.decode(response.bodyBytes));
@@ -77,11 +101,26 @@ class HomeController extends GetxController {
     update();
   }
 
-  void changeActivepage(int page, PageController pageController) {
-    pageController.animateToPage(page,
-        curve: Curves.ease, duration: const Duration(seconds: 1));
-    activepage = page;
-    update();
+  void changeActivepage(
+    int page,
+    PageController pageController,
+  ) {
+    switch (page) {
+      case 0:
+        {
+          pageController.animateToPage(page,
+              curve: Curves.ease, duration: const Duration(seconds: 1));
+          activepage = page;
+          update();
+        }
+      case 2:
+        {
+          pageController.animateToPage(1,
+              curve: Curves.ease, duration: const Duration(seconds: 1));
+          activepage = page;
+          update();
+        }
+    }
   }
 
   Future<Widget> getConection(String type, String val) async {

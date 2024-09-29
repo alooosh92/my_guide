@@ -57,11 +57,14 @@ class ListCenterHome extends StatelessWidget {
                         children: [
                           Icon(nameIcon),
                           const SizedBox(width: 10),
-                          Text(
-                            controller.centerListFilter[index].name,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w600),
+                          SizedBox(
+                            width: MediaQuery.sizeOf(context).width - 80,
+                            child: Text(
+                              controller.centerListFilter[index].name,
+                              overflow: TextOverflow.fade,
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w600),
+                            ),
                           ),
                         ],
                       ),
