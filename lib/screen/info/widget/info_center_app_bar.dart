@@ -22,13 +22,16 @@ class InfoCenterAppBar extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      medicalCenter.name,
-                      overflow: TextOverflow.fade,
-                      style: const TextStyle(
-                          color: ColorManager.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w700),
+                    SizedBox(
+                      width: MediaQuery.sizeOf(context).width - 40,
+                      child: Text(
+                        medicalCenter.name,
+                        overflow: TextOverflow.fade,
+                        style: const TextStyle(
+                            color: ColorManager.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700),
+                      ),
                     ),
                   ],
                 ),

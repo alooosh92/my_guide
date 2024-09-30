@@ -18,18 +18,6 @@ class InfoScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorManager.primary,
       appBar: appbarInfo(context, medicalCenter),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      // floatingActionButton: FloatingActionButton.small(
-      //     backgroundColor: Colors.transparent,
-      //     onPressed: () async {
-      //       if (await canLaunchUrlString(medicalCenter.mapLocation)) {
-      //         launchUrlString(medicalCenter.mapLocation);
-      //       }
-      //     },
-      //     child: Image.asset(
-      //       'asset/images/map.png',
-      //       fit: BoxFit.fill,
-      //     )),
       bottomNavigationBar: BottomNavigationBarDefInf(
         pageController: pageController,
         medicalCenter: medicalCenter,
